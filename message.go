@@ -157,7 +157,7 @@ func (m Message) Write(wc io.WriteCloser) error {
 
 func (m Message) writeAttachments(w *multipart.Writer) error {
 	for _, attachment := range m.attachments {
-		bs, err := os.ReadFile(attachment)
+		bs, err := os.ReadFile(filepath.Clean(attachment))
 		if err != nil {
 			return err
 		}
