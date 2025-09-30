@@ -3,4 +3,11 @@ build:
 
 # go install github.com/golangci/golangci-lint/cmd/golangci-lint@latest
 lint:
+	go vet ./...
 	golangci-lint run ./...
+
+sec:
+	govulncheck ./...
+	grype .
+	trivy fs .
+
